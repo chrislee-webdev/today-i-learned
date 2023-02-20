@@ -8,7 +8,12 @@ body {
     font-family: 'Sono', sans-serif;
     background-color: #292524;
     color: #fafaf9;
-    padding: 40px;
+    padding: 48px 64px;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .main {
@@ -28,6 +33,11 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.logo img {
+    width: 68px;
+    height: 68px;
 }
 
 h1 {
@@ -75,3 +85,27 @@ h1 {
 ul {
     list-style: none;
 }
+
+.source:link,
+.source:visited {
+    color: #a8a29e;
+    margin-left: 12px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.source:hover, 
+.source:active {
+    color: #3b82f6
+}
+
+.btn {
+    border: none;
+    color:inherit;
+    font-family: 'Coiny', sans-serif;
+    line-height: 1;
+    text-transform: 17px;
+    padding: 16px 0 13px;
+    background-image: linear-gradient(135deg, #3b82f6, #16a34a, #ef4444, #eab308);
+}
+
