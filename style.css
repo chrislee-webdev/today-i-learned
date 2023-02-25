@@ -160,7 +160,7 @@ ul {
 
 .fact-form input,
 .fact-form select {
-    /* max-width: 220px; */
+    width: 220px;
     background-color: #78716c;
     border: none;
     border-radius: 100px;
@@ -182,4 +182,34 @@ ul {
     font-size: medium;
     font-size: 18px;
     margin-right: 18px;
+}
+
+/* Media Query */
+@media (max-width: 900px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 1000px) {
+    body {
+        padding: 32px 48px;
+    }
+
+    .fact-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .fact-form input,
+    .fact-form select {
+        width: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .fact {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+    }
 }
