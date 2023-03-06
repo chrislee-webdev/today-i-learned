@@ -46,22 +46,12 @@ function App() {
 
   return (
     <>
-    {/* Header */}
-    <header className="header">
-            <div className="logo">
-                <img src="logo.png" alt="Today I Learned Logo" />
-            <h1>Today I Learned</h1>
-            </div>
-            
-            <button className="btn btn-large btn-open" 
-            // update state variable
-            onClick={() => setShowForm((show) => !show)}>Share a fact</button>
-        </header>
-
+    <Header showForm = {showForm}setShowForm = {setShowForm}/>
+    
     {/* Use state variable */}
     {showForm ? <NewFactForm /> : null}
 
-    <main className="main">
+    <main className = "main">
      <CategoryFilter />
      <FactList />
     </main>
@@ -69,9 +59,44 @@ function App() {
   )
 };
 
+function Header({ showForm, setShowForm }) {
+  const appTitle = 'Today I Learned';
+
+  return (
+  <header className="header">
+            <div className="logo">
+                <img src="logo.png" alt="Today I Learned Logo" />
+            <h1>{appTitle}</h1>
+            </div>
+            
+            <button className="btn btn-large btn-open" 
+            // update state variable
+            onClick={() => setShowForm((show) => !show)}>{showForm ? 'Close' : 'Share a fact'}</button>
+        </header>
+)};
+
 function NewFactForm() {
-  return <form className='fact-form'>Fact Form</form>
-}
+  const [text, setText]=useState("");
+  const [source, setSource]=useState("");
+  const [category, setCategory]=useState("");
+  const textLength = text.length
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  };
+
+  return <form className="fact-form" onSubmit={handleSubmit}>
+    <input type = "text" placeholder="Share a fact with the world" value={text} 
+    onChange={(e) => setText(e.target.value)}/>
+            <span>{200 - textLength}</span>
+            <input value={source} type="text" placeholder="source url" onChange={(e) => setSource(e.target.value)} />
+            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Choose category:</option>
+                {CATEGORIES.map((cat) => <option key={cat.name} value={cat.name}>{cat.name.toUpperCase()}</option>)}
+            </select>
+            <button className = "btn btn-large">Submit</button>
+  </form>
+};
 
 const CATEGORIES = [
   { name: "technology", color: "#3b82f6" },
@@ -93,7 +118,7 @@ function CategoryFilter() {
         <button class="btn btn-category" style={{ backgroundColor: cat.color }}>{cat.name}</button></li>)}
     </ul>
   </aside>
-}
+};
 
 function FactList() {
   const facts = initialFacts;
@@ -104,7 +129,7 @@ function FactList() {
     <p>There are {facts.length} facts in the database. Add your own!</p>
     </section>
   
-}
+};
 
 function Fact({ fact }) {
   return (
@@ -120,6 +145,6 @@ function Fact({ fact }) {
       <button>⛔️ {fact.votesFalse}</button>
   </div>
   </li>
-)}
+)};
 
 export default App;
