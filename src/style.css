@@ -29,7 +29,7 @@ body {
 }
 
 section {
-    overflow: scroll;
+    /* overflow: scroll; */
     padding-bottom: 40px;
 }
 
